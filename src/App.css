@@ -6,3 +6,10 @@
         margin: 1em;
     }
 }
+.card{
+    margin: 1em 25%;
+}
+.card-button{
+    float:right;
+    margin-top: 1em;
+}

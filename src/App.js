@@ -6,14 +6,24 @@ import '../node_modules/bootstrap/dist/js/bootstrap.min.js';
 
 function App() {
   return (
-    <div className = "card modal-dialog modal-xl">
+      <div>
+      <div className= "card">
+          <div className= "card-body">
+              Hello i'm a post.
+          </div>
+      </div>
+    <div className = "card">
         <div class = "card-body">
-        <textarea className= "form-control card-input"/>
+            <div className="form-group">
+                <label htmlFor="usr">Name:</label>
+                <input type="text" className="form-control" id="usr"/>
+            </div>
         <button className= "btn btn-danger card-button">
             Post
         </button>
         </div>
     </div>
+      </div>
   );
 }
 
