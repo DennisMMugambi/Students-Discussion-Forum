@@ -9,11 +9,23 @@ class App extends Component {
 
     constructor(props){
         super(props);
+        this.addPost = this.addPost.bind(this);
+        this.handleOnInputChange = this.handleOnInputChange.bind(this);
         this.state = {
-            posts : [
-                "Hello World!!"
-            ],
+            posts :[],
+            newPostBody: '',
         }
+    }
+    addPost(){
+        const newState = Object.assign({}, this.state);
+        newState.posts.push(this.state.newPostBody);
+        newState.newPostBody = '';
+        this.setState(newState);
+    }
+    handleOnInputChange(ev){
+        this.setState({
+            newPostBody : ev.target.value
+        })
     }
     render() {
         return (
@@ -28,9 +40,9 @@ class App extends Component {
                 <div className="card">
                     <div class="card-body">
                         <div className="form-group">
-                            <input type="text" className="form-control" id="usr"/>
+                            <input type="text" className="form-control" id="usr" onChange={this.handleOnInputChange}/>
                         </div>
-                        <button className="btn btn-danger card-button">
+                        <button className="btn btn-danger card-button" onClick={this.addPost}>
                             Post
                         </button>
                     </div>
