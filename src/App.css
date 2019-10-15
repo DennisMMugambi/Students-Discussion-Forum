@@ -1,0 +1,8 @@
+.modal-dialog{
+    margin: 1em 25%;
+}
+@media(max-width: 900px ) {
+    .modal-dialog{
+        margin: 1em;
+    }
+}
