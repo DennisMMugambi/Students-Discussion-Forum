@@ -40,7 +40,7 @@ class App extends Component {
                 <div className="card">
                     <div class="card-body">
                         <div className="form-group">
-                            <input type="text" className="form-control" id="usr" onChange={this.handleOnInputChange}/>
+                            <input type="text" className="form-control" id="usr" value={this.state.newPostBody} onChange={this.handleOnInputChange}/>
                         </div>
                         <button className="btn btn-danger card-button" onClick={this.addPost}>
                             Post
