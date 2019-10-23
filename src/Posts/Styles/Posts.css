@@ -1,12 +1,8 @@
-.modal-dialog{
+.card{
     margin: 1em 25%;
 }
 @media(max-width: 900px ) {
     .modal-dialog{
         margin: 1em;
     }
-}
-.card-button{
-    float:right;
-    margin-top: 1em;
 }

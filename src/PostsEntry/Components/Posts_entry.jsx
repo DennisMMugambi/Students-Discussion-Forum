@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import '../Styles/PostsEntry.css';
 
 class Posts_entry extends Component{
     constructor(props) {
