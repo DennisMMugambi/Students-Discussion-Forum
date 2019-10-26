@@ -10,6 +10,7 @@ class Threads extends Component {
         super(props);
 
         this.addPost = this.addPost.bind(this);
+        this.updateLocalState = this.updateLocalState.bind(this);
         this.state = {
             posts :[],
         }
@@ -20,7 +21,7 @@ class Threads extends Component {
     componentWillMount() {
         const {updateLocalState} = this;
         this.databaseRef.on('child_added', snapshot => {
-            const response = snapshot.val(0);
+            const response = snapshot.val();
             updateLocalState(response);
         } );
     }
