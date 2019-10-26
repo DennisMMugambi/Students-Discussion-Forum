@@ -1,20 +1,42 @@
 import React, {Component} from 'react';
 import Post from "../../Posts/Components/Post";
 import Posts_entry from "../../PostsEntry/Components/Posts_entry";
+import firebase from "firebase";
+import 'firebase/database';
 
 class Threads extends Component {
 
     constructor(props){
         super(props);
+
         this.addPost = this.addPost.bind(this);
         this.state = {
             posts :[],
         }
+        const db = firebase.database().ref();
+        this.databaseRef = db.child('post');
     }
-    addPost(newPostBody){
-        const newState = Object.assign({}, this.state);
-        newState.posts.push(newPostBody);
-        this.setState(newState);
+
+    componentWillMount() {
+        const {updateLocalState} = this;
+        this.databaseRef.on('child_added', snapshot => {
+            const response = snapshot.val(0);
+            updateLocalState(response);
+        } );
+    }
+
+    addPost(postBody){
+        const postToSave = {postBody};
+        this.databaseRef.push().set(postToSave);
+    }
+
+    updateLocalState(response){
+        const posts = this.state.posts;
+        const brokenDownPost = response.postBody.split(/[\r\n]/g);
+         posts.push(brokenDownPost);
+         this.setState({
+             posts: posts,
+         });
     }
     render() {
         return (

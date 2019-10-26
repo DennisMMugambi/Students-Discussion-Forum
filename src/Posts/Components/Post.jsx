@@ -3,7 +3,11 @@ import '../Styles/Posts.css';
 const Post = (props) => (
     <div className= "card">
         <div className= "card-body">
-            { props.postBody }
+            {
+                props.postBody.map((postPart, idx) => (
+                <div>{postPart}</div>
+                ))
+            }
         </div>
     </div>
 );
